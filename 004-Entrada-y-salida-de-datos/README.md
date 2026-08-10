@@ -2,211 +2,304 @@
 
 ## Capítulo 004 - Entrada y salida de datos
 
-Hasta ahora nuestros programas utilizaban valores definidos directamente en el código.
+Hasta ahora utilizamos variables cuyos valores estaban escritos directamente dentro del código.
 
-En este capítulo comenzaremos a interactuar con el usuario utilizando la consola.
+En este capítulo aprenderemos a hacer que el usuario pueda ingresar información utilizando la consola.
 
 ---
 
 # ¿Qué aprenderás?
 
-- Cómo mostrar información.
-- Cómo recibir información del usuario.
-- Cómo utilizar `Console.WriteLine()`.
-- Cómo utilizar `Console.ReadLine()`.
-- Cómo convertir texto a números.
-- Cómo utilizar interpolación de cadenas.
+- Cómo declarar una variable.
+- Cómo mostrar información en la consola.
+- Cómo solicitar información al usuario.
+- Cómo leer información utilizando `Console.ReadLine()`.
+- Cómo guardar el dato ingresado en una variable.
+- Cómo mostrar posteriormente ese dato.
 
 ---
 
-# Salida de datos
+# 1. Declarar una variable
 
-Para mostrar información en la consola podemos utilizar:
+Antes de guardar el nombre del usuario necesitamos una variable.
 
 ```csharp
-Console.WriteLine("Hola mundo");
+string nombre;
 ```
 
-El resultado será:
+En este caso utilizamos:
 
 ```text
-Hola mundo
+string
+```
+
+porque queremos almacenar texto.
+
+La variable se llama:
+
+```text
+nombre
+```
+
+Todavía no contiene ningún valor.
+
+---
+
+# 2. Solicitar información
+
+Ahora necesitamos indicarle al usuario qué información debe ingresar.
+
+Utilizamos:
+
+```csharp
+Console.Write("Escriba su nombre: ");
+```
+
+La consola mostrará:
+
+```text
+Escriba su nombre:
+```
+
+El programa todavía no está leyendo información.
+
+Solamente estamos mostrando un mensaje.
+
+---
+
+# 3. Leer información
+
+Para leer lo que escribe el usuario utilizamos:
+
+```csharp
+Console.ReadLine();
+```
+
+Pero además necesitamos guardar esa información.
+
+Por eso escribimos:
+
+```csharp
+nombre = Console.ReadLine();
+```
+
+Ahora el contenido ingresado por el usuario queda almacenado en la variable `nombre`.
+
+---
+
+# 4. Mostrar la información
+
+Una vez almacenado el dato podemos utilizarlo.
+
+Primero mostramos:
+
+```csharp
+Console.Write("Hola: ");
+```
+
+Después mostramos nuestra variable:
+
+```csharp
+Console.Write(nombre);
+```
+
+Si el usuario escribió:
+
+```text
+Jonatan
+```
+
+obtendremos:
+
+```text
+Hola: Jonatan
 ```
 
 ---
 
-# WriteLine y Write
-
-También podemos utilizar:
+# Código completo
 
 ```csharp
-Console.Write("Nombre: ");
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        // Declaramos la variable.
+        string nombre;
+
+        // Solicitamos el dato.
+        Console.Write("Escriba su nombre: ");
+
+        // Leemos y almacenamos el dato.
+        nombre = Console.ReadLine();
+
+        // Mostramos el resultado.
+        Console.Write("Hola: ");
+        Console.Write(nombre);
+    }
+}
 ```
 
-La diferencia principal es que `WriteLine()` agrega un salto de línea después del texto.
+---
+
+# ¿Cómo funciona?
+
+Podemos pensar nuestro programa en cuatro pasos:
+
+```text
+1. DECLARAR
+
+string nombre;
+
+        ↓
+
+2. SOLICITAR
+
+Console.Write("Escriba su nombre: ");
+
+        ↓
+
+3. LEER
+
+nombre = Console.ReadLine();
+
+        ↓
+
+4. MOSTRAR
+
+Console.Write(nombre);
+```
+
+---
+
+# Console.Write()
+
+Utilizamos:
 
 ```csharp
-Console.WriteLine("Hola");
-Console.WriteLine("Mundo");
+Console.Write();
+```
+
+para mostrar información en la consola.
+
+Por ejemplo:
+
+```csharp
+Console.Write("Hola");
 ```
 
 Resultado:
 
 ```text
 Hola
-Mundo
-```
-
-Mientras que:
-
-```csharp
-Console.Write("Hola ");
-Console.Write("Mundo");
-```
-
-produce:
-
-```text
-Hola Mundo
 ```
 
 ---
 
-# Entrada de datos
+# Console.ReadLine()
 
-Para leer información ingresada por el usuario utilizamos:
+Utilizamos:
 
 ```csharp
 Console.ReadLine();
 ```
 
+para leer una línea de texto ingresada por el usuario.
+
 Por ejemplo:
 
 ```csharp
-Console.Write("Ingresá tu nombre: ");
-
-string nombre = Console.ReadLine() ?? "";
+nombre = Console.ReadLine();
 ```
 
-El programa se detendrá en ese punto hasta que el usuario escriba algo y presione Enter.
+El programa espera a que el usuario escriba algo y presione **Enter**.
+
+El texto ingresado se guarda en `nombre`.
 
 ---
 
-# ¿Qué devuelve ReadLine?
+# ¿Write o WriteLine?
 
-`Console.ReadLine()` devuelve texto.
-
-Por ejemplo, aunque escribamos:
-
-```text
-30
-```
-
-el valor recibido inicialmente es una cadena de caracteres.
-
-Si necesitamos trabajar con ese valor como un número debemos convertirlo.
-
----
-
-# Convertir texto a int
-
-Podemos utilizar:
+También existe:
 
 ```csharp
-int edad = int.Parse(Console.ReadLine() ?? "0");
+Console.WriteLine();
 ```
 
-Ahora `edad` es un `int` y podemos realizar operaciones matemáticas con ella.
+La diferencia es sencilla.
 
----
-
-# Interpolación de cadenas
-
-C# permite insertar variables directamente dentro de un texto utilizando `$`.
+`Write` mantiene el cursor en la misma línea:
 
 ```csharp
-string nombre = "Jonatan";
-int edad = 30;
-
-Console.WriteLine($"Hola, {nombre}. Tenés {edad} años.");
+Console.Write("Hola ");
+Console.Write("Jonatan");
 ```
 
 Resultado:
 
 ```text
-Hola, Jonatan. Tenés 30 años.
+Hola Jonatan
 ```
 
----
+Mientras que `WriteLine` agrega un salto de línea:
 
-# Flujo del programa
+```csharp
+Console.WriteLine("Hola");
+Console.WriteLine("Jonatan");
+```
 
-Nuestro programa ahora sigue este proceso:
+Resultado:
 
 ```text
-USUARIO
-   ↓
-Console.ReadLine()
-   ↓
-VARIABLE
-   ↓
-PROCESAMIENTO
-   ↓
-Console.WriteLine()
-   ↓
-RESULTADO
+Hola
+Jonatan
 ```
-
-Este patrón aparecerá constantemente cuando construyamos programas más completos.
 
 ---
 
 # Ejercicio
 
-Modificar el programa para solicitar:
+Modificar el programa para solicitar también la ciudad.
 
-- Nombre.
-- Edad.
-- Ciudad.
+Primero declarar las variables:
 
-Guardar cada dato en una variable.
-
-Luego mostrar:
-
-```text
-=== PERFIL ===
-
-Nombre: Jonatan
-Edad: 30
-Ciudad: Eldorado
+```csharp
+string nombre;
+string ciudad;
 ```
 
-Como desafío adicional, solicitar dos números y mostrar su suma.
+Luego pedir ambos datos al usuario.
+
+El resultado debería ser similar a:
+
+```text
+Escriba su nombre: Jonatan
+Escriba su ciudad: Eldorado
+
+Hola: Jonatan
+Ciudad: Eldorado
+```
 
 ---
 
 # Dato importante
 
-`Console.ReadLine()` devuelve texto.
+`Console.ReadLine()` permite leer texto ingresado desde la consola.
 
-Por eso, cuando necesitamos trabajar con números debemos convertir el valor recibido.
+Por ahora trabajaremos únicamente con `string`.
 
-En este capítulo utilizamos:
-
-```csharp
-int.Parse()
-```
-
-Más adelante aprenderemos una forma más segura utilizando:
+Más adelante aprenderemos cómo recibir números y convertir el texto ingresado a tipos como:
 
 ```csharp
-int.TryParse()
+int
+double
+decimal
 ```
+
+De esta manera incorporaremos los conceptos progresivamente.
 
 ---
 
 # Próximo capítulo
 
-## Condicionales: if y else
-
-Utilizaremos los datos ingresados por el usuario para hacer que nuestro programa pueda tomar decisiones.
+Continuaremos utilizando los datos ingresados por el usuario para construir programas más completos.
