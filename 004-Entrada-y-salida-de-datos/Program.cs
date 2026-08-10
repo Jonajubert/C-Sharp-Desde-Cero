@@ -12,10 +12,8 @@ internal class Program
         // y lo guardamos en la variable nombre.
         nombre = Console.ReadLine();
 
-        // Mostramos un saludo.
-        Console.Write("Hola: ");
+        // Mostramos un saludo con el dato almacenado.
+        Console.WriteLine($"Hola + {nombre}.");
 
-        // Mostramos el contenido de la variable.
-        Console.Write(nombre);
     }
 }
