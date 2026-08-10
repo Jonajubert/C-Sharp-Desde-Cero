@@ -91,16 +91,10 @@ Ahora el contenido ingresado por el usuario queda almacenado en la variable `nom
 
 Una vez almacenado el dato podemos utilizarlo.
 
-Primero mostramos:
+Mostramos:
 
 ```csharp
-Console.Write("Hola: ");
-```
-
-Después mostramos nuestra variable:
-
-```csharp
-Console.Write(nombre);
+Console.WriteLine($"Hola + {nombre}.");
 ```
 
 Si el usuario escribió:
@@ -112,7 +106,7 @@ Jonatan
 obtendremos:
 
 ```text
-Hola: Jonatan
+Hola Jonatan
 ```
 
 ---
@@ -134,8 +128,7 @@ internal class Program
         nombre = Console.ReadLine();
 
         // Mostramos el resultado.
-        Console.Write("Hola: ");
-        Console.Write(nombre);
+        Console.WriteLine($"Hola + {nombre}.");
     }
 }
 ```
