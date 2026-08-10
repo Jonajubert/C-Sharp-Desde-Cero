@@ -1,32 +1,21 @@
-// ==========================================
-// C# DESDE CERO
-// Capítulo 004 - Entrada y salida de datos
-// ==========================================
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        // Declaramos una variable de tipo string.
+        string nombre;
 
+        // Mostramos un mensaje solicitando el nombre.
+        Console.Write("Escriba su nombre: ");
 
-// Mostramos un mensaje en la consola.
-Console.WriteLine("=== DATOS PERSONALES ===");
+        // Leemos lo escrito por el usuario
+        // y lo guardamos en la variable nombre.
+        nombre = Console.ReadLine();
 
+        // Mostramos un saludo.
+        Console.Write("Hola: ");
 
-// Solicitamos el nombre al usuario.
-Console.Write("Ingresá tu nombre: ");
-
-// Console.ReadLine() permite leer lo que
-// el usuario escribe en la consola.
-string nombre = Console.ReadLine() ?? "";
-
-
-// Solicitamos la edad.
-Console.Write("Ingresá tu edad: ");
-
-// ReadLine devuelve texto.
-// int.Parse convierte ese texto a un número entero.
-int edad = int.Parse(Console.ReadLine() ?? "0");
-
-
-// Mostramos los datos utilizando interpolación.
-Console.WriteLine();
-Console.WriteLine("=== RESULTADO ===");
-
-Console.WriteLine($"Hola, {nombre}!");
-Console.WriteLine($"Tenés {edad} años.");
+        // Mostramos el contenido de la variable.
+        Console.Write(nombre);
+    }
+}
